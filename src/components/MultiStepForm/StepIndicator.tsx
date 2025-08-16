@@ -1,3 +1,4 @@
+import useIsMobile from "@/libs/hooks/useIsMobile";
 import { STEP_CONFIGS } from "./constants";
 
 interface StepIndicatorProps {
@@ -9,6 +10,7 @@ export default function StepIndicator({
   currentStep,
   totalSteps,
 }: StepIndicatorProps) {
+  const { isMobile } = useIsMobile();
   return (
     <div className="flex items-center justify-center mb-8">
       {STEP_CONFIGS.map((stepConfig, index) => {
@@ -20,7 +22,7 @@ export default function StepIndicator({
         return (
           <div key={stepConfig.step} className="flex items-center">
             <div
-              className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${
+              className={`flex items-center justify-center w-12 h-12 max-md:w-10 max-md:h-10 rounded-full border-2 transition-all duration-300 ${
                 isActive
                   ? "bg-white border-[1px] border-white !text-[#000]"
                   : isCompleted
@@ -28,11 +30,11 @@ export default function StepIndicator({
                   : "border-[1px] border-[rgba(255,255,255,0.4)] text-[rgba(255,255,255,0.4)]"
               }`}
             >
-              <Icon size={20} />
+              <Icon size={isMobile ? 14 : 20} />
             </div>
             {!isLast && (
               <div
-                className={`w-16 h-0.5 mx-2 transition-colors duration-300 ${
+                className={`w-16 max-md:w-2 h-0.5 mx-2 transition-colors duration-300 ${
                   isCompleted ? "bg-[#2B7A51]" : "bg-[rgba(255,255,255,0.4)]"
                 }`}
               />

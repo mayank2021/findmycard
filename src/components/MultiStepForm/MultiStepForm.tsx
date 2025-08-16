@@ -106,7 +106,7 @@ export default function MultiStepForm() {
   };
 
   return (
-    <div className="py-8 px-4">
+    <div className="py-8 px-4 max-md:py-4">
       <div className="max-w-2xl mx-auto">
         <div className="p-8">
           {/* Step Indicator */}
@@ -119,7 +119,7 @@ export default function MultiStepForm() {
             </p>
 
             {showSuperAccuracyToggle && (
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center max-md:mt-2">
                 <p className="text-[rgba(255,255,255,0.4)] text-left font-satoshi max-md:mt-1 text-[16px] leading-[150%] tracking-[-2%] max-md:tracking-[-0.48px] [font-feature-settings:'ss03_on']">
                   Turn off super accuracy mode
                 </p>

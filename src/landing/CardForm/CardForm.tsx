@@ -20,18 +20,6 @@ const PaymentForm: React.FC = () => {
 
   const router = useRouter();
 
-  // const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const value = e.target.value;
-  //   // Only allow digits and limit to 10 characters
-  //   const digitsOnly = value.replace(/\D/g, "");
-  //   if (digitsOnly.length <= 10) {
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       mobile: e.target.value,
-  //     }));
-  //   }
-  // };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = validateStep(1, formData, ["monthlySpend"]);

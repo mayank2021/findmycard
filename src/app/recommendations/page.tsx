@@ -82,7 +82,7 @@ const CardsRecommendations = () => {
   const hideContainer = hideLounge && hideAddedBenefits;
 
   return (
-    <div className="relative h-screen px-10 items-center justify-center gap-8 pb-[200px] lg:gap-16 font-sans">
+    <div className="relative h-screen max-md:h-auto max-md:px-0 max-md:pb-[60px] px-10 items-center justify-center gap-8 pb-[200px] lg:gap-16 font-sans">
       <div className="aboslute top-0">
         <div className="relative h-[270px] overflow-hidden w-full flex justify-center items-center">
           <div
@@ -123,16 +123,16 @@ const CardsRecommendations = () => {
         </div>
       </div>
       <div>
-        <div className="max-w-[984px] mx-auto text-center mt-[100px]">
+        <div className="max-w-[984px] mx-auto text-center mt-[100px] max-md:mt-[60px]">
           <h1 className="text-[#FFF] capitalize text-center font-butlerpro relative !z-[20] text-[80px] font-medium leading-[110%] tracking-[-6px] max-md:text-[56px] max-md:tracking-[-4%]">
             {camelCaseToWords(bestCard?.cardType || "")}
           </h1>
-          <p className="text-white -mt-2 uppercase opacity-70 text-center font-satoshi max-md:mt-1 text-[16px] font-normal leading-[150%] tracking-[-2%] max-md:tracking-[-0.48px] [font-feature-settings:'ss03_on']">
+          <p className="text-white -mt-2 uppercase opacity-70 text-center font-satoshi max-md:-mt-2 text-[16px] font-normal leading-[150%] tracking-[-2%] max-md:tracking-[-0.48px] [font-feature-settings:'ss03_on']">
             the only card you need
           </p>
         </div>
         <div className="flex justify-center my-5">{divider}</div>
-        <div className="flex gap-6 justify-center">
+        <div className="flex max-md:flex-col max-md:items-center gap-6 justify-center">
           <div className="border-b-2 rounded-lg border-[#A9DFD8] bg-[rgba(169,223,216,0.22)] w-[180px] flex flex-col justify-center items-center py-3">
             <p className="text-[60px] font-bold -mt-5 text-[#A9DFD8]">
               {formatAmount(Number(bestCard?.total))}
@@ -164,11 +164,11 @@ const CardsRecommendations = () => {
             cardExtraInfo?.loungeAccess[0]?.toLowerCase() === "none" ? (
               ""
             ) : (
-              <div className="flex">
-                <p className="w-[373px] text-[20px] font-bold text-[rgba(255,255,255,0.8)]">
+              <div className="flex max-md:flex-col max-md:gap-2">
+                <p className="w-[30%] max-md:w-full text-[20px] font-bold text-[rgba(255,255,255,0.8)]">
                   Lounge access
                 </p>
-                <ul className="list-disc text-white opacity-70">
+                <ul className="w-[70%] max-md:w-full max-md:text-justify list-disc text-white opacity-70">
                   {cardExtraInfo?.loungeAccess?.map(
                     (ele: string, index: number) => (
                       <li key={index}>{ele}</li>
@@ -182,11 +182,11 @@ const CardsRecommendations = () => {
             cardExtraInfo?.addedBenefits[0]?.toLowerCase() === "none" ? (
               ""
             ) : (
-              <div className="flex mt-5">
-                <p className="w-[300px] text-[20px] font-bold text-[rgba(255,255,255,0.8)]">
+              <div className="flex mt-5 max-md:flex-col max-md:gap-2">
+                <p className="w-[30%] max-md:w-full text-[20px] font-bold text-[rgba(255,255,255,0.8)]">
                   Value added benefits
                 </p>
-                <ul className="list-disc text-white opacity-70">
+                <ul className="w-[70%] max-md:w-full max-md:text-justify list-disc text-white opacity-70">
                   {cardExtraInfo?.addedBenefits?.map(
                     (ele: string, index: number) => (
                       <li key={index}>{ele}</li>

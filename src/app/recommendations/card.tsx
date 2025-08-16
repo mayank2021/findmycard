@@ -5,13 +5,13 @@ const Card = ({ color }: { color: string }) => {
   const { formData } = useFormContext();
 
   return (
-    <div className="relative w-96 h-64 mb-8 lg:mb-0">
+    <div className="relative w-96 h-64  max-md:w-[300px] max-md:h-[206px] mb-8 lg:mb-0">
       {/* Card Bottom Shadow */}
       {/* <div className="absolute top-4 left-4 w-96 h-64 rounded-lg bg-gray-100 shadow-lg hidden md:block"></div> */}
 
       {/* Card Top */}
       <div
-        className="absolute top-0 left-0 w-96 h-64 rounded-lg shadow-xl overflow-hidden"
+        className="absolute top-0 left-0 w-96 h-64  max-md:w-[300px] max-md:h-[206px] rounded-lg shadow-xl overflow-hidden"
         style={{
           //   background: "linear-gradient(120deg, #FC5179, #FB5117)",
           background: color,
@@ -64,10 +64,10 @@ const Card = ({ color }: { color: string }) => {
         </div>
         {/* Card Details */}
         <div className="absolute bottom-4 left-8 flex justify-between items-end text-white opacity-75">
-          <div className="flex flex-col w-[225px]">
+          <div className="flex flex-col w-[150px]">
             <span className="text-xs mb-1">Card Holder</span>
             <span className="text-sm font-medium capitalize">
-              {formData?.fullName || "_ _ _"}
+              {formData?.fullName?.slice(0, 16) || "_ _ _"}
             </span>
           </div>
           <div className="flex flex-col items-center">
