@@ -1,8 +1,104 @@
 @import "tailwindcss";
 
+/* Font Face Declarations - Must be loaded before Tailwind */
+@font-face {
+  font-family: "Hubot";
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+  src: url("/fonts/hubot-sans-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Satoshi";
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+  src: url("/fonts/satoshi-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pacifico";
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/pacifico.ttf") format("truetype");
+}
+
+/* ButlerPro Font Family - All weights */
+@font-face {
+  font-family: "ButlerPro";
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+  src: url("/fonts/ButlerPro-Light-Ds.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ButlerPro";
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/ButlerPro-Roman.woff2") format("woff2"),
+    url("/fonts/ButlerPro-Roman.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ButlerPro";
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  src: url("/fonts/ButlerPro-Medium-Ds.woff2") format("woff2"),
+    url("/fonts/ButlerPro-Medium-Ds.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ButlerPro";
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  src: url("/fonts/ButlerPro-SemiBold-Ds.woff2") format("woff2"),
+    url("/fonts/ButlerPro-SemiBold-Ds.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ButlerPro";
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/ButlerPro-Bold.woff2") format("woff2"),
+    url("/fonts/ButlerPro-Bold.ttf") format("truetype");
+}
+
+/* Separate font families for Tailwind classes */
+@font-face {
+  font-family: "ButlerProRoman";
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/ButlerPro-Roman.woff2") format("woff2"),
+    url("/fonts/ButlerPro-Roman.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ButlerProMedium";
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  src: url("/fonts/ButlerPro-Medium-Ds.woff2") format("woff2"),
+    url("/fonts/ButlerPro-Medium-Ds.ttf") format("truetype");
+}
+
+/* Tailwind CSS Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-hubot: "Hubot", system-ui, sans-serif;
+  --font-satoshi: "Satoshi", system-ui, sans-serif;
+  --font-pacifico: "Pacifico", cursive;
+  --font-butlerpro: "ButlerPro", Georgia, serif;
+  --font-butlerproroman: "ButlerProRoman", "ButlerPro", Georgia, serif;
+  --font-butlerpromedium: "ButlerProMedium", "ButlerPro", Georgia, serif;
 }
 
 @theme inline {
@@ -22,5 +118,56 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-satoshi);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-satoshi);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Ensure font classes work */
+  .font-hubot {
+    font-family: var(--font-hubot) !important;
+  }
+
+  .font-satoshi {
+    font-family: var(--font-satoshi) !important;
+  }
+
+  .font-pacifico {
+    font-family: var(--font-pacifico) !important;
+  }
+
+  .font-butlerpro {
+    font-family: var(--font-butlerpro) !important;
+  }
+
+  .font-butlerproroman {
+    font-family: var(--font-butlerproroman) !important;
+  }
+
+  .font-butlerpromedium {
+    font-family: var(--font-butlerpromedium) !important;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+}
+
+/* Custom bigger dotted border */
+.border-dotted-large {
+  border-bottom: none;
+  background-image: radial-gradient(circle, #828282 30%, transparent 30%);
+  background-size: 8px 4px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  padding-bottom: 2px;
 }
