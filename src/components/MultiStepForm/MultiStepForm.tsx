@@ -121,7 +121,9 @@ export default function MultiStepForm() {
             {showSuperAccuracyToggle && (
               <div className="flex justify-between items-center max-md:mt-2">
                 <p className="text-[rgba(255,255,255,0.4)] text-left font-satoshi max-md:mt-1 text-[16px] leading-[150%] tracking-[-2%] max-md:tracking-[-0.48px] [font-feature-settings:'ss03_on']">
-                  Turn off super accuracy mode
+                  Turn{" "}
+                  {superAccuracyMode.toLowerCase() === "off" ? "on" : "off"}{" "}
+                  super accuracy mode
                 </p>
 
                 <Toggle

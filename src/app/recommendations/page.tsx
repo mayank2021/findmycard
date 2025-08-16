@@ -145,7 +145,7 @@ const CardsRecommendations = () => {
       </div>
       <div>
         <div className="max-w-[984px] mx-auto text-center mt-[100px] max-md:mt-[60px]">
-          <h1 className="text-[#FFF] capitalize text-center font-butlerpro relative !z-[20] text-[80px] font-medium leading-[110%] tracking-[-6px] max-md:text-[56px] max-md:tracking-[-4%]">
+          <h1 className="text-[#FFF] max-md:px-4 capitalize text-center font-butlerpro relative !z-[20] text-[80px] font-medium leading-[110%] tracking-[-6px] max-md:text-[56px] max-md:tracking-[-4%]">
             {camelCaseToWords(bestCard?.cardType || "")}
           </h1>
           <p className="text-white -mt-2 uppercase opacity-70 text-center font-satoshi max-md:-mt-2 text-[16px] font-normal leading-[150%] tracking-[-2%] max-md:tracking-[-0.48px] [font-feature-settings:'ss03_on']">
