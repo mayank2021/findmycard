@@ -65,13 +65,34 @@ const CardsRecommendations = () => {
     setIsHovering(false);
   };
 
-  const { cardExtraInfo, bestCard } = JSON.parse(
-    localStorage.getItem("cardForYou") || "{}"
-  );
+  const [cardData, setCardData] = useState<{
+    cardExtraInfo: {
+      loungeAccess: string[];
+      addedBenefits: string[];
+    };
+    bestCard: {
+      cardType: string;
+      total: string | number;
+    };
+  } | null>(null);
 
-  if (!cardExtraInfo || !bestCard) {
+  useEffect(() => {
+    try {
+      const storedData = localStorage.getItem("cardForYou");
+      if (storedData) {
+        const parsed = JSON.parse(storedData);
+        setCardData(parsed);
+      }
+    } catch (error) {
+      console.error("Failed to parse localStorage data:", error);
+    }
+  }, []);
+
+  if (!cardData?.cardExtraInfo || !cardData?.bestCard) {
     return <Fallback />;
   }
+
+  const { cardExtraInfo, bestCard } = cardData;
 
   const hideLounge =
     cardExtraInfo?.loungeAccess.length === 1 &&

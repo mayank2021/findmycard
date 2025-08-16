@@ -18,6 +18,14 @@ export class FormLocalStorage {
    */
   static saveFormState(state: Omit<StoredFormState, "lastUpdated">): void {
     try {
+      // Check if we're in a browser environment
+      if (
+        typeof window === "undefined" ||
+        typeof localStorage === "undefined"
+      ) {
+        return;
+      }
+
       const stateWithTimestamp: StoredFormState = {
         ...state,
         lastUpdated: Date.now(),
@@ -36,6 +44,14 @@ export class FormLocalStorage {
    */
   static saveFormData(formData: FormData): void {
     try {
+      // Check if we're in a browser environment
+      if (
+        typeof window === "undefined" ||
+        typeof localStorage === "undefined"
+      ) {
+        return;
+      }
+
       const existingState = this.getFormState();
       const updatedState: StoredFormState = {
         formData,
@@ -54,6 +70,14 @@ export class FormLocalStorage {
    */
   static saveCurrentStep(step: number): void {
     try {
+      // Check if we're in a browser environment
+      if (
+        typeof window === "undefined" ||
+        typeof localStorage === "undefined"
+      ) {
+        return;
+      }
+
       const existingState = this.getFormState();
       const updatedState: StoredFormState = {
         formData: existingState?.formData || INITIAL_FORM_DATA,
@@ -72,6 +96,14 @@ export class FormLocalStorage {
    */
   static saveAccuracyMode(mode: string): void {
     try {
+      // Check if we're in a browser environment
+      if (
+        typeof window === "undefined" ||
+        typeof localStorage === "undefined"
+      ) {
+        return;
+      }
+
       const existingState = this.getFormState();
       const updatedState: StoredFormState = {
         formData: existingState?.formData || INITIAL_FORM_DATA,
@@ -90,6 +122,14 @@ export class FormLocalStorage {
    */
   static getFormState(): StoredFormState | null {
     try {
+      // Check if we're in a browser environment
+      if (
+        typeof window === "undefined" ||
+        typeof localStorage === "undefined"
+      ) {
+        return null;
+      }
+
       const stored = localStorage.getItem(FORM_STORAGE_KEY);
       if (!stored) return null;
 
@@ -160,6 +200,14 @@ export class FormLocalStorage {
    */
   static clearFormData(): void {
     try {
+      // Check if we're in a browser environment
+      if (
+        typeof window === "undefined" ||
+        typeof localStorage === "undefined"
+      ) {
+        return;
+      }
+
       localStorage.removeItem(FORM_STORAGE_KEY);
     } catch (error) {
       console.error("Failed to clear form data from localStorage:", error);
@@ -171,6 +219,14 @@ export class FormLocalStorage {
    */
   static updateFormField(field: keyof FormData, value: string): void {
     try {
+      // Check if we're in a browser environment
+      if (
+        typeof window === "undefined" ||
+        typeof localStorage === "undefined"
+      ) {
+        return;
+      }
+
       const existingState = this.getFormState();
       if (!existingState) return;
 
